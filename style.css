@@ -96,9 +96,14 @@ h1{ margin:0; font-size:34px; letter-spacing:0.2px; }
 
 .form{
   display:grid;
-  grid-template-columns: 1fr 160px 140px 110px;
+  grid-template-columns: 1fr 160px 140px 200px 140px 110px;
   gap:10px;
 }
+
+@media (max-width: 900px){
+  .form{ grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 760px){
   .form{ grid-template-columns: 1fr 1fr; }
 }
@@ -291,3 +296,47 @@ input::placeholder{ color: rgba(244,247,255,0.55); }
   padding: 0 6px;
 }
 .hint{ color: var(--muted); font-size: 14px; }
+
+/* Toast notifications */
+.toastHost{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  gap: 10px;
+  z-index: 9999;
+}
+.toast{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(17,24,39,0.92);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5);
+  border-radius: 16px;
+  padding: 12px 12px;
+  width: min(380px, calc(100vw - 36px));
+  backdrop-filter: blur(10px);
+}
+.toastTitle{
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+.toastBody{
+  color: rgba(244,247,255,0.80);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.toastActions{
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.toastBtn{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 800;
+}
+.toastBtn:hover{ background: rgba(255,255,255,0.12); }
+

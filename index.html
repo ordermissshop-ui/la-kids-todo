@@ -32,6 +32,27 @@
       </div>
 
       <form id="todoForm" class="form" autocomplete="off">
+  <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
+  <input id="dueInput" type="date" />
+
+  <!-- NEW: time + reminder lead time -->
+  <input id="timeInput" type="time" />
+  <select id="remindBeforeInput" aria-label="Remind before">
+    <option value="0" selected>No reminder</option>
+    <option value="15">15 minutes before</option>
+    <option value="60">1 hour before</option>
+    <option value="1440">1 day before</option>
+  </select>
+
+  <select id="priorityInput" aria-label="Priority">
+    <option value="low">Low</option>
+    <option value="med" selected>Med</option>
+    <option value="high">High</option>
+  </select>
+
+  <button class="btn primary" type="submit">Add</button>
+</form>
+
         <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
         <input id="dueInput" type="date" />
         <select id="priorityInput" aria-label="Priority">
@@ -85,5 +106,6 @@
     navigator.serviceWorker.register("./sw.js");
   }
 </script>
+<div id="toastHost" class="toastHost" aria-live="polite"></div>
 </body>
 </html>

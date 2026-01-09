@@ -35,7 +35,6 @@
   <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
   <input id="dueInput" type="date" />
 
-  <!-- NEW: time + reminder lead time -->
   <input id="timeInput" type="time" />
   <select id="remindBeforeInput" aria-label="Remind before">
     <option value="0" selected>No reminder</option>
@@ -52,6 +51,7 @@
 
   <button class="btn primary" type="submit">Add</button>
 </form>
+
 
         <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
         <input id="dueInput" type="date" />
@@ -99,13 +99,14 @@
       <span class="hint">Tip: Click a task to edit it ✨</span>
     </footer>
   </main>
+<div id="toastHost" class="toastHost" aria-live="polite"></div>
 
-  <script src="app.js"></script>
+<script src="app.js" defer></script>
 <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   }
 </script>
-<div id="toastHost" class="toastHost" aria-live="polite"></div>
+
 </body>
 </html>

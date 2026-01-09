@@ -34,8 +34,16 @@
       <!-- ✅ ONE single form (no duplicates) -->
       <form id="todoForm" class="form" autocomplete="off">
         <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
-        <input id="dueInput" type="date" />
-        <input id="timeInput" type="time" />
+        <div class="field">
+  <span class="fieldLabel">Date</span>
+  <input id="dueInput" type="date" aria-label="Due date" />
+</div>
+
+<div class="field">
+  <span class="fieldLabel">Time</span>
+  <input id="timeInput" type="time" aria-label="Due time" />
+</div>
+
 
         <select id="remindBeforeInput" aria-label="Remind before">
           <option value="0" selected>No reminder</option>

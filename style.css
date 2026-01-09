@@ -109,9 +109,26 @@ h1{ margin:0; font-size:34px; letter-spacing:0.2px; }
   min-width: 220px;
 }
 
+.field{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Hide labels on desktop (placeholders already exist) */
+@media (min-width: 901px){
+  .fieldLabel{ display: none; }
+  .field{ gap: 0; }
+}
+
 
 @media (max-width: 900px){
   .form{ grid-template-columns: 1fr 1fr; }
+  .fieldLabel{
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.75;
+  }
 }
 
 input, select{

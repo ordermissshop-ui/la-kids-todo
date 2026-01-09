@@ -1,0 +1,89 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kids Todo</title>
+  <link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#8b5cf6">
+
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div>
+        <h1>✅ Kids Todo</h1>
+        <p class="sub">This app is made to help my sons organise their daily tasks.</p>
+      </div>
+
+      <div class="stats">
+        <div class="pill" id="statsText">0 tasks</div>
+        <button class="btn ghost" id="exportBtn" type="button" title="Export tasks">Export</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="row">
+        <label class="label">Project</label>
+        <div class="projects" id="projectTabs" aria-label="Projects"></div>
+        <button class="btn small" id="addProjectBtn" type="button">+ Project</button>
+      </div>
+
+      <form id="todoForm" class="form" autocomplete="off">
+        <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
+        <input id="dueInput" type="date" />
+        <select id="priorityInput" aria-label="Priority">
+          <option value="low">Low</option>
+          <option value="med" selected>Med</option>
+          <option value="high">High</option>
+        </select>
+        <button class="btn primary" type="submit">Add</button>
+      </form>
+
+      <div class="controls">
+        <div class="filters" role="tablist" aria-label="Filters">
+          <button class="chip active" data-filter="all" type="button">All</button>
+          <button class="chip" data-filter="active" type="button">Active</button>
+          <button class="chip" data-filter="done" type="button">Done</button>
+        </div>
+
+        <div class="rightControls">
+          <input id="searchInput" class="search" placeholder="Search…" />
+          <select id="sortInput" class="sort" aria-label="Sort">
+            <option value="newest" selected>Newest</option>
+            <option value="due">Due date</option>
+            <option value="priority">Priority</option>
+          </select>
+          <button class="btn danger" id="clearCompleted" type="button">Clear done</button>
+        </div>
+      </div>
+
+      <div class="progressWrap" aria-label="Progress">
+        <div class="progressBar">
+          <div class="progressFill" id="progressFill"></div>
+        </div>
+        <div class="progressText" id="progressText">0% done</div>
+      </div>
+    </section>
+
+    <section class="listWrap">
+      <ul id="todoList" class="list" aria-label="Todo items"></ul>
+      <div id="emptyState" class="empty">No tasks yet. Add one above 👆</div>
+    </section>
+
+    <footer class="footer">
+      <button class="btn ghost" id="clearAll" type="button">Clear all</button>
+      <span class="hint">Tip: Click a task to edit it ✨</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+</script>
+</body>
+</html>

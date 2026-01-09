@@ -1,15 +1,15 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kids Todo</title>
-  <link rel="stylesheet" href="style.css" />
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#8b5cf6">
 
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#8b5cf6">
 </head>
+
 <body>
   <main class="app">
     <header class="top">
@@ -31,35 +31,25 @@
         <button class="btn small" id="addProjectBtn" type="button">+ Project</button>
       </div>
 
+      <!-- ✅ ONE single form (no duplicates) -->
       <form id="todoForm" class="form" autocomplete="off">
-  <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
-  <input id="dueInput" type="date" />
-
-  <input id="timeInput" type="time" />
-  <select id="remindBeforeInput" aria-label="Remind before">
-    <option value="0" selected>No reminder</option>
-    <option value="15">15 minutes before</option>
-    <option value="60">1 hour before</option>
-    <option value="1440">1 day before</option>
-  </select>
-
-  <select id="priorityInput" aria-label="Priority">
-    <option value="low">Low</option>
-    <option value="med" selected>Med</option>
-    <option value="high">High</option>
-  </select>
-
-  <button class="btn primary" type="submit">Add</button>
-</form>
-
-
         <input id="todoInput" type="text" placeholder="Add a task… (e.g. Read 10 mins)" maxlength="120" />
         <input id="dueInput" type="date" />
+        <input id="timeInput" type="time" />
+
+        <select id="remindBeforeInput" aria-label="Remind before">
+          <option value="0" selected>No reminder</option>
+          <option value="15">15 minutes before</option>
+          <option value="60">1 hour before</option>
+          <option value="1440">1 day before</option>
+        </select>
+
         <select id="priorityInput" aria-label="Priority">
           <option value="low">Low</option>
           <option value="med" selected>Med</option>
           <option value="high">High</option>
         </select>
+
         <button class="btn primary" type="submit">Add</button>
       </form>
 
@@ -99,14 +89,18 @@
       <span class="hint">Tip: Click a task to edit it ✨</span>
     </footer>
   </main>
-<div id="toastHost" class="toastHost" aria-live="polite"></div>
 
-<script src="app.js" defer></script>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
-  }
-</script>
+  <!-- ✅ Toasts must exist BEFORE app.js runs -->
+  <div id="toastHost" class="toastHost" aria-live="polite"></div>
 
+  <!-- ✅ Defer is safest so DOM is ready -->
+  <script src="app.js" defer></script>
+
+  <!-- ✅ Service worker: only registers on http/https (won’t error on file://) -->
+  <script>
+    if ("serviceWorker" in navigator && (location.protocol === "http:" || location.protocol === "https:")) {
+      navigator.serviceWorker.register("./sw.js");
+    }
+  </script>
 </body>
 </html>
